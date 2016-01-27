@@ -20,16 +20,25 @@ app.listen(9005);
 
 npm install -g babel
 
+- react
+- react-dom
 - babel
+- babel-loader
 - babel-preset-react
 - babel-preset-es2015
 - babel-cli
+- WebPack
 
 ### Global
 
 - babel-cli
+- nodemon
+- WebPack
 
 WebPack
 - Query: {
     presets: ['react', 'es2015']
 }
+
+
+WebPack -w
