@@ -1,8 +1,8 @@
-
 import express from 'express';
 
 let app = express();
 
-app.get('/', (req,res) => res.send('This is express ;)'));
+//app.get('/', (req,res) => res.send('This is express ;)'));
+ app.use(express.static('public'));
 
-app.listen(9005);
+app.listen(3000);

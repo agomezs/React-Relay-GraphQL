@@ -6,11 +6,11 @@
 - babel-cli
 
 ```js
-import express from 'express';
+import express from "express";
 
 let app = express();
 
-app.get('/', (req,res) => res.send('This is express ;)'));
+app.get("/", (req,res) => res.send("This is express ;)"));
 
 app.listen(9005);
 ```
@@ -18,11 +18,12 @@ app.listen(9005);
 
 ## Install babel
 
-npm install -g babel
+`> npm install -g babel`
 
 - react
 - react-dom
 - babel
+- babel-core
 - babel-loader
 - babel-preset-react
 - babel-preset-es2015
@@ -35,10 +36,6 @@ npm install -g babel
 - nodemon
 - WebPack
 
-WebPack
-- Query: {
-    presets: ['react', 'es2015']
-}
-
-
-WebPack -w
+## WebPack
+Run it
+`> WebPack -w -d`
