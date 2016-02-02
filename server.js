@@ -1,4 +1,7 @@
 import express from 'express';
+import schema from './data/schema';
+import ExpressGraphql from 'express-graphql';
+
 import {MongoClient} from 'mongodb';
 
 let app = express();
@@ -10,6 +13,11 @@ const MONGO_URL = 'mongodb://localhost:27017/rgrjs';
 
 //app.get('/', (req,res) => res.send('This is express ;)'));
 app.use(express.static('public'));
+
+app.use('/graphql', ExpressGraphql({
+  schema,
+  graphiql: true
+}));
 
 MongoClient.connect(MONGO_URL, (err, database) => {
   if(err) { throw err; }
