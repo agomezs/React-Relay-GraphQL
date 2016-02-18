@@ -39,3 +39,23 @@ app.listen(9005);
 ## WebPack
 Run it
 `> WebPack -w -d`
+
+
+## MongoDB
+
+- Manage mongod Processes
+
+`mongod.exe --dbpath "c:\users\gomezaa\mongodb"`
+
+https://docs.mongodb.org/manual/tutorial/manage-mongodb-processes/
+
+```
+> use rgrjs
+> db
+> show dbs
+```
+
+
+http://localhost:9005/data/links
+http://localhost:9005/graphql
+
