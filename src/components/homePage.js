@@ -29,12 +29,16 @@ export default class HomePage extends React.Component {
   }
 
     render() {
+      let linksContent = this.state.links.map(link => {
+        return <li key={link._id}>
+                <a href={link.url}>{link.title}</a>
+              </li>
+      });
       return (
         <div>
           <h3>This is my home page :)</h3>
           <ul>
-            <li>Link ...</li>
-            <li>Link ...</li>
+            {linksContent}
           </ul>
         </div>
       );

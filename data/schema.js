@@ -1,36 +1,35 @@
 import {
   GraphQLSchema,
   GraphQLObjectType,
+  GraphQLList,
   GraphQLInt,
   GraphQLString
 } from 'graphql';
 
-let counter = 1;
+let Schema = (db) => {
 
-let schema = new GraphQLSchema ({
-  query: new GraphQLObjectType({
-    name: 'myQuery',
+  let linkType = new GraphQLObjectType({
+    name: 'Link',
     fields: () => ({
-      counter: { // http://localhost:9005/graphql?query={counter}
-        type: GraphQLInt,
-        resolve: () => counter
-      },
-      people: {
-        type: GraphQLString,
-        resolve: () => "hi from here ;)"
-      }
-    }),
+      _id: { type: GraphQLString },
+      title: { type: GraphQLString },
+      url: { type: GraphQLString }
+    })
+  });
 
-    mutation: new GraphQLObjectType({
-      name: 'myMutation',
+  let schema = new GraphQLSchema({
+    query: new GraphQLObjectType({
+      name: 'Query',
       fields: () => ({
-        incrementCounter: {
-          type: GraphQLInt,
-          resolve: () => ++counter
+        links: {
+          type: new GraphQLList(linkType),
+          resolve: () => db.collection('links').find({}).toArray()
         }
       })
     })
-  })
-});
+  });
 
-export default schema;
+  return schema
+};
+
+export default Schema;

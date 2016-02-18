@@ -5,7 +5,7 @@ let ServerActions = {
   reveiveLinks(links) {
     let action = {
       actionType: ActionTypes.RECEIVE_LINKS,
-      links: ''
+      links
     };
     console.log("2. Here");
     AppDispatcher.dispatch(action);
