@@ -55,7 +55,8 @@ https://docs.mongodb.org/manual/tutorial/manage-mongodb-processes/
 > show dbs
 ```
 
+nodemon --ignore  data/shema.json
+
 
 http://localhost:9005/data/links
 http://localhost:9005/graphql
-

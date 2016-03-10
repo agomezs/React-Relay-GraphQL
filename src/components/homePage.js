@@ -6,13 +6,22 @@ let _getAppState = () => {
   return {links: LinkStore.getAll()};
 };
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component {
+  static propTypes = {
+    limit: React.PropTypes.number
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = _getAppState();
-    this.onChange = this.onChange.bind(this);
-  }
+  static defaultProps = {
+    limit: 6
+  };
+
+  state = _getAppState(); // Each instance of the components needs its own state
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = _getAppState(); // Each instance of the components needs its own state
+  //   this.onChange = this.onChange.bind(this);
+  // }
 
   componentDidMount() {
     API.getLinks();
@@ -23,13 +32,14 @@ export default class HomePage extends React.Component {
     LinkStore.removeListener('change', this.onChange);
   }
 
-  onChange() {
+  // A property, not a function.
+  onChange = () => {
     console.log('4. In the view');
     this.setState(_getAppState());
-  }
+  };
 
     render() {
-      let linksContent = this.state.links.map(link => {
+      let linksContent = this.state.links.slice(0, this.props.limit).map(link => {
         return <li key={link._id}>
                 <a href={link.url}>{link.title}</a>
               </li>
@@ -44,3 +54,9 @@ export default class HomePage extends React.Component {
       );
     }
 }
+
+export default HomePage;
+
+// HomePage.defaultProps = {
+//   limit: 10
+// };
